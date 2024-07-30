@@ -14,6 +14,9 @@ const Main = () => {
           Logout
         </button>
       </nav>
+      <div className={styles.welcome_message}>
+        <h2>Hello, Welcome!</h2>
+      </div>
     </div>
   );
 };
