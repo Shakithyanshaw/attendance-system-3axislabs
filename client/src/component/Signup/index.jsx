@@ -71,7 +71,6 @@ const Signup = () => {
     <div className={styles.signup_container}>
       <div className={styles.signup_form_container}>
         <div className={styles.left}>
-          <h2>Welcome to </h2>
           <h1>ACB School</h1>
           <br></br>
           <Link to="/login">
