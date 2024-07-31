@@ -2,6 +2,10 @@
 
 ## Description
 
+-Frontend = React
+-Backend = Node.js
+-DB = Mongodb
+
 1. **Start server:**
 
    ```bash
