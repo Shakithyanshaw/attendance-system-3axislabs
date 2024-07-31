@@ -3,6 +3,27 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
 
+const validations = {
+  firstName: {
+    regex: /^[a-zA-Z]+$/,
+    message: 'First name can only contain letters.',
+  },
+  lastName: {
+    regex: /^[a-zA-Z]+$/,
+    message: 'Last name can only contain letters.',
+  },
+  email: {
+    regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    message: 'Please enter a valid email address.',
+  },
+  password: {
+    regex:
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+    message:
+      'Password must be at least 8 characters long, and include an uppercase letter, a lowercase letter, a number, and a special character.',
+  },
+};
+
 const Signup = () => {
   const [data, setData] = useState({
     firstName: '',
@@ -15,10 +36,21 @@ const Signup = () => {
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
+    if (!validations[input.name].regex.test(input.value)) {
+      setError(validations[input.name].message);
+    } else {
+      setError('');
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    for (let key in data) {
+      if (!validations[key].regex.test(data[key])) {
+        setError(validations[key].message);
+        return;
+      }
+    }
     try {
       const url = 'http://localhost:8080/api/users';
       const { data: res } = await axios.post(url, data);
@@ -44,7 +76,7 @@ const Signup = () => {
           <br></br>
           <Link to="/login">
             <button type="button" className={styles.white_btn}>
-              Sing in
+              Sign in
             </button>
           </Link>
         </div>
@@ -89,7 +121,7 @@ const Signup = () => {
             />
             {error && <div className={styles.error_msg}>{error}</div>}
             <button type="submit" className={styles.green_btn}>
-              Sing Up
+              Sign Up
             </button>
           </form>
         </div>
