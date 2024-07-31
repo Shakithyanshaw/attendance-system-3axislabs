@@ -25,3 +25,37 @@
   cursor: pointer;
   margin-right: 20px;
 }
+
+.attendance_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.attendance_table th,
+.attendance_table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.attendance_table th {
+  background-color: #f4f4f4;
+}
+
+.submit_btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.submit_btn:hover {
+  background-color: #45a049;
+}
